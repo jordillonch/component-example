@@ -5,4 +5,7 @@
 (defrecord MathOracleSimple []
   MathOracle
   (sum [this value1 value2]
-    (+ value1 value2)))
+    (+ value1 value2))
+
+  (sub [this value1 value2]
+    (- value1 value2)))

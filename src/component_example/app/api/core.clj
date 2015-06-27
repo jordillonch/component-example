@@ -4,12 +4,14 @@
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [org.httpkit.server :refer [run-server]]
             [com.stuartsierra.component :as component]
-            [component-example.app.api.math-sum :refer :all]))
+            [component-example.app.api.math-sum :refer :all]
+            [component-example.app.api.math-sub :refer :all]))
 
 (defn app-routes [math-engine-oracle]
   (routes
     (GET "/" [] "Component example project!")
     (POST "/math/sum" request (math-sum math-engine-oracle request))
+    (POST "/math/sub" request (math-sub math-engine-oracle request))
     (route/not-found "Not found")))
 
 (defrecord ApplicationApiComponent []
