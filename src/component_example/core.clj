@@ -1,13 +1,12 @@
 (ns component-example.core
   (:require [com.stuartsierra.component :as component]
-            [component-example.app.api.core]
-            [component-example.context.math-engine.core :refer [context-math-engine-system]])
-  (:import (component_example.app.api.core ApplicationApiComponent)))
+            [component-example.app.api.core :refer [new-application-api]]
+            [component-example.context.math-engine.core :refer [new-context-math-engine-system]]))
 
 (defn my-system []
   (component/system-map
-    :context-math-engine (context-math-engine-system)
-    :application-api (component/using (ApplicationApiComponent.) [:context-math-engine])))
+    :context-math-engine (new-context-math-engine-system)
+    :application-api (component/using (new-application-api) [:context-math-engine])))
 
 (def system (my-system))
 

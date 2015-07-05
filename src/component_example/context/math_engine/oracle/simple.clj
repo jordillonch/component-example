@@ -6,3 +6,6 @@
   MathOracle
   (sum [this value1 value2]
     (+ value1 value2)))
+
+(defn new-math-oracle []
+  (map->MathOracleSimple {}))
