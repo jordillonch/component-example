@@ -14,7 +14,7 @@
     (POST "/math/sub" request (math-sub math-engine-oracle request))
     (route/not-found "Not found")))
 
-(defrecord ApplicationApiComponent []
+(defrecord ApplicationApiComponent [context-math-engine]
   component/Lifecycle
 
   (start [component]
@@ -22,7 +22,7 @@
     (assoc component :stop-server
                      (run-server
                        (wrap-defaults
-                         (app-routes (get-in component [:context-math-engine :oracle]))
+                         (app-routes (:oracle context-math-engine))
                          (assoc-in site-defaults [:security :anti-forgery] false))
                        {:port 8080})
                      ))
@@ -31,3 +31,6 @@
     (println "  Stopping Application API...")
     ((:stop-server component))
     (dissoc component :stop-server)))
+
+(defn new-application-api []
+  (map->ApplicationApiComponent {}))
