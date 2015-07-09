@@ -22,7 +22,7 @@ On your console:
 
 On other console:
     
-    $ curl http://localhost:8080/math/sum --data "value1=1;value2=2"
+    $ curl http://localhost:8080/math/sum --data "value1=1&value2=2"
     
 Now you can change the code to create a new endpoint on the API in order to do substractions:
 
@@ -36,7 +36,7 @@ Now you can change the code to create a new endpoint on the API in order to do s
     
 - On your second console:
     
-        $ curl http://localhost:8080/math/sub --data "value1=1;value2=2" 
+        $ curl http://localhost:8080/math/sub --data "value1=1&value2=2" 
 
 
 ## License
