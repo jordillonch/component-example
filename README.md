@@ -39,6 +39,11 @@ Now you can change the code to create a new endpoint on the API in order to do s
         $ curl http://localhost:8080/math/sub --data "value1=1&value2=2" 
 
 
+## Slides
+
+[Slides](http://www.slideshare.net/jllonch/component-library)
+
+
 ## License
 
 The MIT License (MIT)

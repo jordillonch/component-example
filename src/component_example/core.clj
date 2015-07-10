@@ -3,10 +3,14 @@
             [component-example.app.api.core :refer [new-application-api]]
             [component-example.context.math-engine.core :refer [new-context-math-engine-system]]))
 
+(def math-engine
+  new-context-math-engine-system)
+
 (defn my-system []
   (component/system-map
-    :context-math-engine (new-context-math-engine-system)
-    :application-api (component/using (new-application-api) [:context-math-engine])))
+    :context-math-engine (math-engine)
+    :application-api (component/using (new-application-api)
+                                      [:context-math-engine])))
 
 (def system (my-system))
 
